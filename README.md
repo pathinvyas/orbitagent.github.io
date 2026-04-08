@@ -4,6 +4,11 @@ Welcome to the `docs/` directory of the **Orbit Agent** architecture.
 
 This specific directory acts as the dedicated static web front-end and documentation repository. It is strategically engineered to operate as a completely decoupled landing, information dissemination, and binary distribution hub for the primary software suite.
 
+## Check the engine now!
+
+https://pathinvyas.github.io/orbitagent.github.io/
+
+
 ## 🏗️ Technical Architecture
 
 This web portal is designed intentionally without massive JavaScript frameworks (such as React or Next.js) to guarantee absolute zero-latency execution, flawless universal browser compatibility, and unhindered algorithmic crawling.
