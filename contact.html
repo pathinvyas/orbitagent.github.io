@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Orbit Agent - Contact and Location Map.">
+    <title>Secure Uplink | Orbit Agent</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@400;500;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        .contact-layout { display: flex; gap: 4rem; max-width: 1200px; margin: 0 auto 5rem; }
+        .contact-form-container { flex: 1; }
+        .contact-info-container { flex: 1; display: flex; flex-direction: column; gap: 2rem; }
+
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; font-family: 'Fira Code', monospace; font-size: 0.9rem; color: var(--accent-cyan); margin-bottom: 0.5rem; text-transform: uppercase; }
+        .form-control { 
+            width: 100%; padding: 1.2rem; background: rgba(0,0,0,0.4); border: 1px solid var(--border-subtle); 
+            border-radius: 8px; color: var(--text-main); font-family: 'Inter', sans-serif; font-size: 1rem;
+            transition: all 0.3s;
+        }
+        .form-control:focus { outline: none; border-color: var(--accent-pink); box-shadow: 0 0 20px rgba(255,0,122,0.3); background: rgba(255,0,122,0.05); }
+        textarea.form-control { resize: vertical; min-height: 150px; }
+        
+        .info-card { background: rgba(10,14,26,0.5); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 2rem; backdrop-filter: blur(10px); }
+        .info-title { font-family: 'Space Grotesk'; font-size: 1.3rem; margin-bottom: 1rem; color: #FFF; display: flex; align-items: center; gap: 10px; }
+        .info-title::before { content: ''; width: 8px; height: 8px; background: var(--accent-cyan); border-radius: 50%; box-shadow: var(--neon-glow); }
+        .info-text { color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 1rem; display: block; text-decoration: none; transition: color 0.3s; }
+        .info-text:hover { color: var(--accent-cyan); }
+        
+        .map-container { width: 100%; height: 300px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle); position: relative; }
+        .map-container iframe { width: 100%; height: 100%; border: none; filter: invert(90%) hue-rotate(180deg) contrast(120%); }
+        .map-overlay { position: absolute; inset: 0; pointer-events: none; border: 2px solid rgba(0,240,255,0.1); box-shadow: inset 0 0 30px rgba(0,0,0,0.8); border-radius: 12px; }
+
+        @media (max-width: 900px) {
+            .contact-layout { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <canvas id="network-canvas"></canvas>
+    <div class="grid-overlay"></div>
+
+    <nav>
+        <a href="index.html" class="logo">ORBIT<span> AGENT</span></a>
+        <div class="nav-links">
+            <a href="architecture.html">Architecture</a>
+            <a href="stack.html">Tech Stack</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </nav>
+
+    <main class="container page-header">
+        <h1 class="section-title reveal cyber-font text-gradient" style="font-size: 4rem;">Contact Us</h1>
+        <p class="section-subtitle reveal">Reach out to the developers for inquiries.</p>
+
+        <div class="contact-layout reveal">
+            <div class="glass-card contact-form-container">
+                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message successfully sent.');">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" class="form-control" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" class="form-control" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea class="form-control" placeholder="Enter your message..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem;">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+
+            <div class="contact-info-container">
+                <div class="info-card">
+                    <h3 class="info-title">Network Coordinates</h3>
+                    <a href="mailto:orbitagent@example.com" class="info-text">Email: orbitagent@example.com</a>
+                    <a href="https://linkedin.com/in/pathinvyas" target="_blank" class="info-text" style="color: var(--accent-pink);">LinkedIn Profile</a>
+                    <a href="https://github.com/pathinvyas/Orbit-Agent" target="_blank" class="info-text" style="color: var(--text-main);">GitHub Repository</a>
+                </div>
+
+                <div class="info-card" style="padding: 1.5rem;">
+                    <h3 class="info-title" style="margin-bottom: 1.5rem;">Physical Command Node</h3>
+                    <p class="info-text" style="font-size: 0.9rem;">Laurentian University Campus<br>Sudbury, ON, Canada</p>
+                    <div class="map-container hover-target">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10926.216345914197!2d-80.98595503460883!3d46.46747124976451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4d2effeaca4ef3cf%3A0xe7bdc35c602bd715!2sLaurentian%20University!5e0!3m2!1sen!2sca!4v1714578132943!5m2!1sen!2sca" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <div class="map-overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p class="cyber-font" style="margin-bottom: 10px; font-size: 1.1rem;">Engineered by <span>The Orbit Consortium</span></p>
+        <p style="font-family: 'Inter', sans-serif; font-size: 0.9rem;">&copy; 2026 Orbit Agent. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

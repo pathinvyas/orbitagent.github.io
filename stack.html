@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Orbit Agent - Tech Stack and Components.">
+    <title>Tech Stack | Orbit Agent</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@400;500;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        .split-layout { display: flex; align-items: center; gap: 4rem; margin-bottom: 5rem; flex-direction: row-reverse; }
+        .split-text { flex: 1; text-align: left; }
+        .split-image { flex: 1; text-align: center; position: relative; }
+        
+        .hero-img { 
+            width: 100%; max-width: 550px; border-radius: 20px; 
+            box-shadow: 0 0 50px rgba(255, 0, 122, 0.3), var(--glass-border);
+            border: 1px solid var(--accent-pink);
+            animation: floatImage 5s ease-in-out infinite alternate;
+        }
+        @keyframes floatImage { 0% { transform: translateY(0) scale(1); } 100% { transform: translateY(-15px) scale(1.02); } }
+
+        .stack-grid { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: flex-start; margin-top: 3rem; }
+        .tech-tag {
+            padding: 1.2rem 2.5rem; background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border-subtle);
+            border-radius: 12px; font-family: 'Space Grotesk'; font-size: 1.1rem; font-weight: 700; display: flex; align-items: center; gap: 12px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: var(--glass-border); position: relative; overflow: hidden;
+        }
+        .tech-tag::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,240,255,0.2), rgba(255,0,122,0.2)); opacity: 0; transition: opacity 0.3s; z-index: -1; }
+        .tech-tag:hover { border-color: var(--accent-cyan); color: #FFF; transform: translateY(-5px); box-shadow: var(--neon-glow); }
+        .tech-tag:hover::before { opacity: 1; }
+
+        @media (max-width: 1000px) {
+            .split-layout { flex-direction: column; }
+            .stack-grid { justify-content: center; }
+            .split-text { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+    <canvas id="network-canvas"></canvas>
+    <div class="grid-overlay"></div>
+
+    <nav>
+        <a href="index.html" class="logo">ORBIT<span> AGENT</span></a>
+        <div class="nav-links">
+            <a href="architecture.html">Architecture</a>
+            <a href="stack.html">Tech Stack</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </nav>
+
+    <main class="container page-header">
+        
+        <div class="split-layout reveal">
+            <div class="split-text">
+                <h1 class="cyber-font text-gradient" style="font-size: 4.5rem; line-height: 1; margin-bottom: 1.5rem;">The Engine <br>Room.</h1>
+                <p style="font-size: 1.25rem; color: var(--text-muted); line-height: 1.8; max-width: 600px;">
+                    Built natively for speed and precision. The Orbit pipeline processes dense global data through a highly optimized stack, running deep analytical tools in parallel to standard frontend renders.
+                </p>
+
+                <div class="stack-grid">
+                    <div class="tech-tag hover-target">🚀 Flutter Desktop</div>
+                    <div class="tech-tag hover-target">🎯 Dart Engine</div>
+                    <div class="tech-tag hover-target">🐍 Python 3.10 Backend</div>
+                    <div class="tech-tag hover-target">🧠 Gemini GenAI Models</div>
+                    <div class="tech-tag hover-target">🔌 Pure TCP Sockets</div>
+                    <div class="tech-tag hover-target">🌍 GeoPandas + OpenCV</div>
+                </div>
+            </div>
+            
+            <div class="split-image">
+                <!-- Generated Visual for Stack -->
+                <img src="assets/tech_stack.png" alt="Tech Stack Hologram Diagram" class="hero-img hover-target">
+            </div>
+        </div>
+        
+    </main>
+
+    <footer>
+        <p class="cyber-font" style="margin-bottom: 10px; font-size: 1.1rem;">Engineered by <span>The Orbit Consortium</span></p>
+        <p style="font-family: 'Inter', sans-serif; font-size: 0.9rem;">&copy; 2026 Orbit Agent. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

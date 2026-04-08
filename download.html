@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Orbit Agent - Download the executable mission control.">
+    <title>Download Hub | Orbit Agent</title>
+    <link rel="icon" type="image/png" href="assets/app_icon.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@400;500;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        .download-hub { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 70vh; }
+        .download-card { max-width: 600px; text-align: center; padding: 4rem; margin-top: 2rem; border-color: var(--accent-pink); box-shadow: var(--pink-glow), var(--glass-border), 0 30px 60px rgba(0,0,0,0.8); }
+        .download-card::before { background: linear-gradient(90deg, transparent, var(--accent-pink), transparent); }
+        .version-badge { display: inline-block; padding: 5px 15px; background: rgba(255, 0, 122, 0.2); border: 1px solid var(--accent-pink); border-radius: 50px; color: var(--accent-pink); font-family: 'Fira Code', monospace; font-size: 0.85rem; margin-bottom: 2rem; box-shadow: var(--pink-glow); }
+        
+        .spec-list { text-align: left; margin: 3rem 0; font-family: 'Inter', sans-serif; color: var(--text-main); font-size: 1rem; }
+        .spec-list li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        .spec-list li::before { content: '✓'; color: var(--accent-cyan); font-weight: bold; text-shadow: 0 0 10px var(--accent-cyan); }
+
+        .btn-download { border-color: var(--accent-pink); box-shadow: inset 0 0 20px rgba(255, 0, 122, 0.2), 0 0 30px rgba(255, 0, 122, 0.4); }
+        .btn-download::before { background: linear-gradient(90deg, transparent, rgba(255, 0, 122, 0.4), transparent); }
+        .btn-download:hover { background: rgba(255, 0, 122, 0.1); border-color: var(--accent-cyan); box-shadow: inset 0 0 30px rgba(0, 240, 255, 0.4), 0 0 40px rgba(0, 240, 255, 0.6); }
+
+        .sub-text { margin-top: 1.5rem; font-size: 0.85rem; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+    <canvas id="network-canvas"></canvas>
+    <div class="grid-overlay"></div>
+
+    <nav>
+        <a href="index.html" class="logo">ORBIT<span> AGENT</span></a>
+        <div class="nav-links">
+            <a href="architecture.html">Architecture</a>
+            <a href="stack.html">Tech Stack</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </nav>
+
+    <main class="container page-header download-hub">
+        <h1 class="section-title reveal cyber-font text-gradient">Download Center</h1>
+        <p class="section-subtitle reveal">Acquire the pre-compiled orbital command interface.</p>
+
+        <div class="glass-card download-card reveal hover-target" style="transition-delay: 0.1s;">
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="assets/app_icon.png" alt="Orbit Agent App Icon" style="width: 100px; height: 100px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,240,255,0.4); border: 2px solid var(--accent-cyan); display: inline-block;">
+            </div>
+            <div class="version-badge">v1.0.0.RELEASE</div>
+            <h2 class="cyber-font" style="font-size: 2.2rem; margin-bottom: 1rem; color: #FFF;">Orbit Agent Executable</h2>
+            <p style="color: var(--text-muted); line-height: 1.6;">Contains the high-performance Flutter desktop environment and the integrated Python dual-agent logic core. No external dependencies required.</p>
+            
+            <ul class="spec-list cyber-font">
+                <li>Hardware-Accelerated Geospatial Mapping Engine</li>
+                <li>Zero-Latency Local TCP Socket Pipeline</li>
+                <li>Pre-configured GEMINI NLP Intelligence Nodes</li>
+                <li>Automated Optical Cloud Masking Matrices</li>
+            </ul>
+
+            <a href="OrbitAgent_v1.0.0.zip" download class="btn-primary btn-download">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Download Package (ZIP)
+            </a>
+            <div class="sub-text">Windows 10/11 Only. Approx 85MB.</div>
+        </div>
+    </main>
+
+    <footer>
+        <p class="cyber-font" style="margin-bottom: 10px; font-size: 1.1rem;">Engineered by <span>The Orbit Consortium</span></p>
+        <p style="font-family: 'Inter', sans-serif; font-size: 0.9rem;">&copy; 2026 Orbit Agent Command. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

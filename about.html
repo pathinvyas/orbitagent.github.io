@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Orbit Agent - Command Staff and Objective.">
+    <title>Command Staff | Orbit Agent</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@400;500;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        .about-card {
+            background: var(--bg-panel); border: 1px solid var(--border-subtle); padding: 5rem; border-radius: 20px; 
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: var(--glass-border), 0 20px 50px rgba(0,0,0,0.6);
+            max-width: 900px; margin: 0 auto 5rem; position: relative; overflow: hidden;
+        }
+        .about-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-pink)); }
+        
+        .about-card p {
+            font-size: 1.15rem; color: var(--text-muted); line-height: 2; margin-bottom: 2rem;
+        }
+
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 4rem; }
+        .team-member { text-align: center; padding: 2rem; border-radius: 16px; background: rgba(5,5,10,0.5); border: 1px solid var(--border-subtle); transition: all 0.3s; }
+        .team-member:hover { border-color: var(--accent-cyan); transform: translateY(-10px); box-shadow: var(--neon-glow); background: rgba(0,240,255,0.05); }
+        .team-avatar { width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 1.5rem; background: radial-gradient(circle, var(--accent-cyan), var(--accent-purple)); border: 3px solid rgba(255,255,255,0.1); box-shadow: 0 0 20px rgba(0,240,255,0.4); }
+        .team-name { font-size: 1.5rem; color: var(--text-main); margin-bottom: 0.5rem; }
+        .team-role { font-size: 1rem; color: var(--accent-pink); font-family: 'Fira Code', monospace; font-weight: 500; }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+    <canvas id="network-canvas"></canvas>
+    <div class="grid-overlay"></div>
+
+    <nav>
+        <a href="index.html" class="logo">ORBIT<span> AGENT</span></a>
+        <div class="nav-links">
+            <a href="architecture.html">Architecture</a>
+            <a href="stack.html">Tech Stack</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </nav>
+
+    <main class="container page-header">
+        
+        <h1 class="section-title reveal cyber-font text-gradient" style="font-size: 4rem;">Command Staff & Vision</h1>
+        <p class="section-subtitle reveal">Who we are and why we built this.</p>
+
+        <div class="about-card reveal radar-scan">
+            <h2 class="cyber-font" style="font-size: 2.2rem; margin-bottom: 2rem; color: #FFF;">The Mission Directive</h2>
+            <p>Orbit Agent was born out of frustration with antiquated, manual Geographic Information Systems (GIS). We realized that mapping analysts spend hours downloading raw satellite multi-spectral bands, applying complex math in heavy desktop tools, and manually tracing regions.</p>
+            <p>We envisioned a <strong>fully autonomous</strong> system where an operator types commands like: <br><em>"Retrieve optical imagery for sector 4 and compute vegetation density."</em></p>
+            
+            <h3 class="cyber-font" style="font-size: 1.5rem; margin-top: 3rem; margin-bottom: 1.5rem; color: var(--accent-cyan);">Development Milestones</h3>
+            <div style="border-left: 2px solid var(--border-subtle); padding-left: 20px; margin-top: 2rem;">
+                <div style="position: relative; margin-bottom: 2rem;">
+                    <div style="position: absolute; left: -26px; top: 0; width: 10px; height: 10px; background: var(--accent-cyan); border-radius: 50%; box-shadow: var(--neon-glow);"></div>
+                    <h4 class="cyber-font" style="color: #FFF; font-size: 1.2rem;">Phase 1: Architecture Core</h4>
+                    <p style="font-size: 1rem; margin-top: 0.5rem;">Development of the pure TCP socket bridge decoupling heavy geospatial computation from the frontend UI.</p>
+                </div>
+                <div style="position: relative; margin-bottom: 2rem;">
+                    <div style="position: absolute; left: -26px; top: 0; width: 10px; height: 10px; background: var(--accent-pink); border-radius: 50%; box-shadow: var(--pink-glow);"></div>
+                    <h4 class="cyber-font" style="color: #FFF; font-size: 1.2rem;">Phase 2: LLM Integration</h4>
+                    <p style="font-size: 1rem; margin-top: 0.5rem;">Wiring the Dual-Agent (Planner & Researcher) generative logic to autonomously parse user target coordinates.</p>
+                </div>
+                <div style="position: relative;">
+                    <div style="position: absolute; left: -26px; top: 0; width: 10px; height: 10px; background: var(--accent-purple); border-radius: 50%;"></div>
+                    <h4 class="cyber-font" style="color: #FFF; font-size: 1.2rem;">Phase 3: Native Deployment</h4>
+                    <p style="font-size: 1rem; margin-top: 0.5rem;">Compiling the Mission Control dashboard to a standalone Windows executable for maximum frame rates.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p class="cyber-font" style="margin-bottom: 10px; font-size: 1.1rem;">Engineered by <span>The Orbit Consortium</span></p>
+        <p style="font-family: 'Inter', sans-serif; font-size: 0.9rem;">&copy; 2026 Orbit Agent. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

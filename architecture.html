@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Orbit Agent - System Architecture.">
+    <title>Architecture | Orbit Agent</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@400;500;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        .split-layout { display: flex; align-items: center; gap: 4rem; margin-bottom: 6rem; }
+        .split-text { flex: 1; }
+        .split-image { flex: 1; text-align: center; position: relative; }
+        
+        .hero-img { 
+            width: 100%; max-width: 600px; border-radius: 20px; 
+            box-shadow: 0 0 50px rgba(0, 240, 255, 0.3), var(--glass-border);
+            border: 1px solid var(--accent-cyan);
+            animation: floatImage 6s ease-in-out infinite;
+        }
+        @keyframes floatImage { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
+        .bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; perspective: 1200px; auto-rows: minmax(280px, auto); margin-bottom: 4rem; }
+        .card-wide { grid-column: span 2; }
+        .card-tall { grid-row: span 2; }
+
+        .feature-icon { font-size: 3rem; margin-bottom: 1.5rem; transform: translateZ(40px); display: inline-block; filter: drop-shadow(0 0 20px var(--accent-cyan)); }
+        .glass-card h3 { font-size: 1.6rem; margin-bottom: 1rem; transform: translateZ(25px); color: var(--text-main); }
+        .glass-card p { color: var(--text-muted); font-size: 1.05rem; transform: translateZ(15px); line-height: 1.8; }
+        
+        .card-wide::after { content: ''; position: absolute; bottom: -50px; right: -50px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(255, 0, 122, 0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+        .card-tall::after { content: ''; position: absolute; top: -50px; right: -50px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+
+        @media (max-width: 1000px) {
+            .split-layout { flex-direction: column; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .card-wide, .card-tall { grid-column: span 1; grid-row: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+    <canvas id="network-canvas"></canvas>
+    <div class="grid-overlay"></div>
+
+    <nav>
+        <a href="index.html" class="logo">ORBIT<span> AGENT</span></a>
+        <div class="nav-links">
+            <a href="architecture.html">Architecture</a>
+            <a href="stack.html">Tech Stack</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </nav>
+
+    <main class="container page-header">
+        
+        <div class="split-layout reveal">
+            <div class="split-text">
+                <h1 class="cyber-font text-gradient" style="font-size: 5rem; line-height: 1; margin-bottom: 1.5rem; text-align: left;">Core <br>Logic.</h1>
+                <p style="font-size: 1.25rem; color: var(--text-muted); line-height: 1.8; text-align: left; max-width: 500px;">
+                    A completely decoupled infrastructure that bridges unstructured natural language with militarized geospatial computation tools. At its center lies an autonomous dual-agent protocol.
+                </p>
+            </div>
+            <div class="split-image">
+                <!-- Using the generated image from assets -->
+                <img src="assets/orbit_architecture.png" alt="Orbit Agent Architecture Diagram" class="hero-img hover-target">
+            </div>
+        </div>
+
+        <div class="bento-grid">
+            <div class="glass-card card-wide reveal" data-tilt>
+                <div class="feature-icon">🧠</div>
+                <h3 class="cyber-font">Dual-Agent Reasoning (Python)</h3>
+                <p>The intelligence core is powered by isolated LLM state machines. The <b>Planner Agent</b> acts as the commander, parsing user directives to determine intent. It delegates extraction to the <b>Researcher Agent</b>, parsing pure text into executable geospatial coordinates.</p>
+            </div>
+
+            <div class="glass-card card-tall reveal" data-tilt style="transition-delay: 0.1s;">
+                <div class="feature-icon">🛰️</div>
+                <h3 class="cyber-font">Geospatial Array</h3>
+                <p>Direct integration with European Space Agency telemetry via Sentinel-2 nodes.</p>
+                <br>
+                <p>The backend utilizes GeoPandas and visual mathematics to instantly compute Normalized Difference Vegetation Indices (NDVI) and automated cloud-mask matrices.</p>
+            </div>
+
+            <div class="glass-card reveal" data-tilt style="transition-delay: 0.2s;">
+                <div class="feature-icon">⚡</div>
+                <h3 class="cyber-font">Zero-Latency Sockets</h3>
+                <p>Bypassing REST bottlenecks, the architecture uses raw TCP sockets for asynchronous buffer streaming directly to the UI.</p>
+            </div>
+
+            <div class="glass-card reveal" data-tilt>
+                <div class="feature-icon">🖥️</div>
+                <h3 class="cyber-font">Native Dashboard</h3>
+                <p>The visual layer is a compiled Windows Executable. Featuring hardware API access, it renders map interfaces at 120 FPS.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p class="cyber-font" style="margin-bottom: 10px; font-size: 1.1rem;">Engineered by <span>The Orbit Consortium</span></p>
+        <p style="font-family: 'Inter', sans-serif; font-size: 0.9rem;">&copy; 2026 Orbit Agent. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
