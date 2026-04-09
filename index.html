@@ -171,7 +171,9 @@
         }
 
         .carousel-slide {
+            flex: 0 0 100%;
             min-width: 100%;
+            width: 100%;
             display: flex;
             flex-direction: column;
         }
@@ -256,6 +258,10 @@
         }
 
         @media (max-width: 768px) {
+            .carousel-container {
+                width: calc(100% - 2rem);
+                margin: 2rem auto;
+            }
             .carousel-btn {
                 width: 35px;
                 height: 35px;
