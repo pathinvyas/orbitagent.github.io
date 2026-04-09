@@ -21,11 +21,18 @@
             justify-content: center;
             text-align: center;
             position: relative;
-            padding-top: 5rem;
+            padding-top: 8rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 12rem;
+                min-height: 85vh;
+            }
         }
 
         .hero-title {
-            font-size: clamp(3rem, 6vw, 5rem);
+            font-size: clamp(2.2rem, 6vw, 5rem);
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 1.5rem;
@@ -145,50 +152,120 @@
             margin-bottom: 1.5rem;
         }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1400px;
+        .carousel-container {
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
             margin: 4rem auto;
-            padding: 0 5%;
-        }
-
-        .gallery-item {
-            background: rgba(10, 14, 26, 0.5);
-            border: 1px solid var(--border-subtle);
-            border-radius: 12px;
             overflow: hidden;
-            box-shadow: var(--glass-border), 0 10px 30px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s;
+            border-radius: 16px;
+            box-shadow: var(--glass-border), 0 20px 40px rgba(0, 0, 0, 0.5);
+            background: rgba(10, 14, 26, 0.6);
+            border: 1px solid var(--border-subtle);
+            backdrop-filter: blur(10px);
         }
 
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-cyan);
+        .carousel-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .gallery-item img {
+        .carousel-slide {
+            min-width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .carousel-slide img {
             width: 100%;
             height: auto;
             display: block;
             border-bottom: 1px solid var(--border-subtle);
         }
 
-        .gallery-caption {
-            padding: 1.5rem;
+        .carousel-caption {
+            padding: 2rem 2rem 4rem;
+            text-align: center;
         }
 
-        .gallery-caption h3 {
-            font-size: 1.25rem;
+        .carousel-caption h3 {
+            font-size: 1.5rem;
             color: #FFF;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
         }
 
-        .gallery-caption p {
-            font-size: 0.95rem;
+        .carousel-caption p {
+            font-size: 1.05rem;
             color: var(--text-muted);
-            line-height: 1.5;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 45%;
+            transform: translateY(-50%);
+            background: rgba(10, 14, 26, 0.8);
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: var(--accent-cyan);
+            color: #000;
+            box-shadow: var(--neon-glow);
+        }
+
+        .carousel-btn.prev { left: 20px; }
+        .carousel-btn.next { right: 20px; }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+        }
+
+        .carousel-indicators button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .carousel-indicators button.active {
+            background: var(--accent-cyan);
+            box-shadow: 0 0 10px var(--accent-cyan);
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .carousel-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+            .carousel-btn.prev { left: 10px; }
+            .carousel-btn.next { right: 10px; }
+            .carousel-caption { padding: 1.5rem 1.5rem 3.5rem; }
+            .carousel-caption h3 { font-size: 1.2rem; }
+            .carousel-caption p { font-size: 0.95rem; }
         }
     </style>
 </head>
@@ -249,35 +326,44 @@
             Indices (NDVI), and projects it onto a high-performance interactive global dashboard.</p>
     </section>
 
-    <section class="gallery-grid">
-        <div class="gallery-item reveal">
-            <img src="assets/DASHBOARD.png" alt="Agent Logic Terminal">
-            <div class="gallery-caption">
-                <h3 class="cyber-font">Agent Orchestration Terminal</h3>
-                <p>The Planner Agent decomposing unstructured language queries into distinct, executable geospatial
-                    pipeline actions.</p>
+    <section class="carousel-container reveal">
+        <div class="carousel-track">
+            <div class="carousel-slide">
+                <img src="assets/DASHBOARD.png" alt="Agent Logic Terminal">
+                <div class="carousel-caption">
+                    <h3 class="cyber-font">Agent Orchestration Terminal</h3>
+                    <p>The Planner Agent decomposing unstructured language queries into distinct, executable geospatial pipeline actions.</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="assets/GEO_DEMO.png" alt="Geocoding Result">
+                <div class="carousel-caption">
+                    <h3 class="cyber-font">Sentinel-2 Optical Viewer</h3>
+                    <p>High-fidelity satellite imaging rendered seamlessly using our hardware-accelerated Flutter interface.</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="assets/COMPARE_DEMO.png" alt="Before/After Comparison">
+                <div class="carousel-caption">
+                    <h3 class="cyber-font">NDVI Indexing Matrix</h3>
+                    <p>Automated mathematical comparison visualizations highlighting regional vegetation health and density anomalies.</p>
+                </div>
             </div>
         </div>
-        <div class="gallery-item reveal" style="transition-delay: 0.1s;">
-            <img src="assets/GEO_DEMO.png" alt="Geocoding Result">
-            <div class="gallery-caption">
-                <h3 class="cyber-font">Sentinel-2 Optical Viewer</h3>
-                <p>High-fidelity satellite imaging rendered seamlessly using our hardware-accelerated Flutter interface.
-                </p>
-            </div>
-        </div>
-        <div class="gallery-item reveal" style="transition-delay: 0.2s;">
-            <img src="assets/COMPARE_DEMO.png" alt="Before/After Comparison">
-            <div class="gallery-caption">
-                <h3 class="cyber-font">NDVI Indexing Matrix</h3>
-                <p>Automated mathematical comparison visualizations highlighting regional vegetation health and density
-                    anomalies.</p>
-            </div>
+
+        <button class="carousel-btn prev" aria-label="Previous Slide">&#10094;</button>
+        <button class="carousel-btn next" aria-label="Next Slide">&#10095;</button>
+
+        <div class="carousel-indicators">
+            <button class="active" data-index="0" aria-label="Slide 1"></button>
+            <button data-index="1" aria-label="Slide 2"></button>
+            <button data-index="2" aria-label="Slide 3"></button>
         </div>
     </section>
 
     <footer>
-        <p class="cyber-font" style="margin-bottom: 10px; font-size: 1.1rem;">Engineered by <span>Velocivis Inc.</span></p>
+        <p class="cyber-font" style="margin-bottom: 10px; font-size: 1.1rem;">Engineered by <span>Velocivis Inc.</span>
+        </p>
         <p style="font-family: 'Inter', sans-serif; font-size: 0.9rem;">&copy; 2026 Orbit Agent. All rights reserved.
         </p>
     </footer>
@@ -312,6 +398,53 @@
                 }
             }
             setTimeout(typeWriter, 800);
+        }
+
+        // Carousel Logic
+        const track = document.querySelector('.carousel-track');
+        if (track) {
+            const nextButton = document.querySelector('.carousel-btn.next');
+            const prevButton = document.querySelector('.carousel-btn.prev');
+            const indicators = document.querySelectorAll('.carousel-indicators button');
+            const slidesCount = 3;
+            let currentSlide = 0;
+            let carouselInterval;
+
+            function updateCarousel(index) {
+                track.style.transform = `translateX(-${index * 100}%)`;
+                indicators.forEach(ind => ind.classList.remove('active'));
+                indicators[index].classList.add('active');
+                currentSlide = index;
+            }
+
+            function nextSlide() {
+                updateCarousel((currentSlide + 1) % slidesCount);
+            }
+
+            function prevSlide() {
+                updateCarousel((currentSlide - 1 + slidesCount) % slidesCount);
+            }
+
+            nextButton.addEventListener('click', () => { nextSlide(); resetInterval(); });
+            prevButton.addEventListener('click', () => { prevSlide(); resetInterval(); });
+
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    updateCarousel(index);
+                    resetInterval();
+                });
+            });
+
+            function startInterval() {
+                carouselInterval = setInterval(nextSlide, 5000);
+            }
+
+            function resetInterval() {
+                clearInterval(carouselInterval);
+                startInterval();
+            }
+
+            startInterval();
         }
     </script>
 </body>
